@@ -9,7 +9,7 @@
                 <div class="buttons">
                     <router-link to="/sign-up" class="button is-success"><strong>Sign up</strong>
                     </router-link>
-                    <router-link to="/login-up" class="button is-light">Login In</router-link>
+                    <router-link to="/sign-in" class="button is-light">Login In</router-link>
                 </div>
             </div>
         </div>
