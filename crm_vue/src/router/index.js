@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import store from '../store'
-import Home from '../views/Home.vue'
-import Signup from '../views/SignUp.vue'
-import SignIn from '../views/SignIn.vue'
-import DashBoard from '../views/dashboard/DashBoard.vue'
-import MyAccount from '../views/dashboard/MyAccount.vue'
 
+import Home from '../views/Home.vue'
+
+import SignUp from '../views/SignUp.vue'
+import LogIn from '../views/LogIn.vue'
+import Dashboard from '../views/dashboard/DashBoard.vue'
+import MyAccount from '../views/dashboard/MyAccount.vue'
+import Leads from '../views/dashboard/Leads.vue'
+import AddLead from '../views/dashboard/AddLead.vue'
 
 const routes = [
   {
@@ -15,13 +18,13 @@ const routes = [
   },
   {
     path: '/sign-up',
-    name: 'Sign Up',
-    component: Signup
+    name: 'SignUp',
+    component: SignUp
   },
   {
-    path: '/sign-in',
-    name: 'Sign In',
-    component: SignIn
+    path: '/log-in',
+    name: 'LogIn',
+    component: LogIn
   },
   {
     path: '/about',
@@ -33,18 +36,34 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'DashBoard',
-    component: DashBoard,
-    meta : {
-      requireLogin : true
+    name: 'Dashboard',
+    component: Dashboard,
+    meta: {
+      requireLogin: true
     }
   },
   {
-    path: '/dashboard/myAccount',
+    path: '/dashboard/my-account',
     name: 'MyAccount',
     component: MyAccount,
-    meta : {
-      requireLogin : true
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/leads',
+    name: 'Leads',
+    component: Leads,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/leads/add',
+    name: 'AddLead',
+    component: AddLead,
+    meta: {
+      requireLogin: true
     }
   },
 ]
@@ -54,11 +73,12 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to , from , next) => {
-  if(to.matched.some(record => record.meta.requireLogin) && !store.state.isAuthenticated) {
-    next('/sign-in')
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin) && !store.state.isAuthenticated) {
+    next('/log-in')
   } else {
     next()
   }
-} )
+})
+
 export default router

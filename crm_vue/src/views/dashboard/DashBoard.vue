@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="columns is-multiline">
-            <div class = "column is-12">
+            <div class="column is-12">
                 <h1 class="title">Dashboard</h1>
             </div>
         </div>
@@ -10,6 +10,6 @@
 
 <script>
     export default {
-        name : 'DashBoard'
-        }
+        name: 'Dashboard'
+    }
 </script>
