@@ -1,12 +1,17 @@
-from rest_framework import  serializers
+from rest_framework import serializers
+
 from .models import Lead
 
-
-class LeadSerializers(serializers.ModelSerializer):
+class LeadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lead
-        fields = ( 
-            'id' ,
+        read_only_fields = (
+            'created_by',
+            'created_at',
+            'modified_at',
+        ),
+        fields = (
+            'id',
             'company',
             'contact_person',
             'email',
@@ -16,7 +21,4 @@ class LeadSerializers(serializers.ModelSerializer):
             'estimated_value',
             'status',
             'priority',
-            'created_by',
-            'created_at',
-            'modified_at'
         )
